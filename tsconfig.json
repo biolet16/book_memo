@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "target": "ES6",
+      "lib": ["ES2015", "DOM", "esnext"],
+      "module": "esnext",
+      "baseUrl": ".",
+      "paths": {
+            "@/components/*": ["components/*"],
+            "@/core/*": ["core/*"]
+        },
+      "allowJs": true,
+      "skipLibCheck": true,
+      "strict": true,
+      "forceConsistentCasingInFileNames": true,
+      "noEmit": true,
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "resolveJsonModule": true,
+      "isolatedModules": true,
+      "jsx": "preserve"
+    },
+    "include": [
+        "next-env.d.ts",
+        "**/*.ts",
+        "**/*.tsx"
+    ],
+    "exclude": [
+      "node_modules"
+    ]
+  }

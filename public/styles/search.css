@@ -83,6 +83,11 @@ input {
 	margin-top: 17%;
 }
 
+.searchBookList a{
+	text-decoration:none;
+}
+
+
 .searchBookItem {
   width: 100%;
   height: 10%;

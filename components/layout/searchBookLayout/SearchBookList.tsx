@@ -1,14 +1,27 @@
+import Link from 'next/link';
+import { useRouter } from "next/router";
 import { BookList } from '@/core/swr/searchBook/types';
 import SearchBookItem from './SearchBookItem';
 interface SearchBookListProps {
     bookList:BookList[];
+    selectBook:any;
 }
-const SearchBookList:React.FC<SearchBookListProps> = ({bookList}) => {
+const SearchBookList:React.FC<SearchBookListProps> = ({bookList, selectBook}) => {
     return (
-        <div className="searchBookList">
+        <div className="searchBookList" >
             {
                 bookList && bookList.map((book:BookList,index:number) => {
-                    return <SearchBookItem key={index} book={book} />
+                    
+                    return (
+                        <Link href="/bookDetail">
+                            <a onClick={() => selectBook(book)}>
+                                <SearchBookItem 
+                                    key={index} 
+                                    book={book} 
+                                />
+                            </a>
+                        </Link>
+                    )
                 })
 
                 ||

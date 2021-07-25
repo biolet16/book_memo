@@ -1,4 +1,5 @@
 import { useSearchBookList } from '@/core/swr/searchBook/useSearchBookList';
+import { useSelectBook } from '@/components/hooks/useSelectBook';
 import { BookList } from '@/core/swr/searchBook/types';
 import { useState } from 'react';
 import SearchBookList from './SearchBookList';
@@ -7,6 +8,7 @@ const SearchBookLayout = () => {
     const [searchBookList, setSearchBookList] = useState<BookList[] | null>(null);
     const [isSetBookList, setIsSetBookList] = useState<boolean>(false);
     const { bookList } = useSearchBookList(bookKeyword);
+    const { setSelectBook } = useSelectBook();
     let recommendClass = bookList.length !== 0 ? '' : 'invisible';
     
     const searchKeyword = (e:any) => {
@@ -17,6 +19,11 @@ const SearchBookLayout = () => {
         setIsSetBookList(true);
         setSearchBookList(bookList);
     }
+    const selectBook = (book:BookList) => {
+        console.log('selectBook');
+        setSelectBook(book);
+    }
+
     
     return (
         <div className="searchWrap">
@@ -38,7 +45,10 @@ const SearchBookLayout = () => {
             </div>
             {
                 searchBookList && 
-                    <SearchBookList bookList={searchBookList}/>
+                    <SearchBookList 
+                        bookList={searchBookList}
+                        selectBook={selectBook}
+                    />
             }
         </div>
     )
